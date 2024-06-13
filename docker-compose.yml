@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  database:
+    image: chatbot-db
+    build:
+      context: ./db
+    ports:
+      - "3036:3036"
+      - "3306:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: teste
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    volumes:
+      - ./db/docker-entrypoint:/docker-entrypoint-initdb.d/
+      # - db-volume:/home/user/mysql_mount/
+
+  backend:
+    image: chatbot-api
+    build:
+      context: ./api/
+    ports:
+      - 5001:5001
+
+volumes:
+  db-volume:
