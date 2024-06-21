@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import ChatBottombar from "./chat-bottombar";
 import { Message, UserData } from "@/pages/chat/data";
 import { cn } from "@/components/utils/utils";
 import { Avatar, AvatarImage } from "../avatar";
@@ -8,15 +7,11 @@ import { AnimatePresence, motion } from "framer-motion";
 interface ChatListProps {
   messages?: Message[];
   selectedUser: UserData;
-  sendMessage: (newMessage: Message) => void;
-  isMobile: boolean;
 }
 
 export function ChatList({
   messages,
   selectedUser,
-  sendMessage,
-  isMobile
 }: ChatListProps) {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -26,6 +21,7 @@ export function ChatList({
         messagesContainerRef.current.scrollHeight;
     }
   }, [messages]);
+  console.log(messages)
 
   return (
     <div className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col">
@@ -87,7 +83,6 @@ export function ChatList({
           ))}
         </AnimatePresence>
       </div>
-      <ChatBottombar sendMessage={sendMessage} isMobile={isMobile}/>
     </div>
   );
 }

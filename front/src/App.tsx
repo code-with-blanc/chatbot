@@ -7,7 +7,7 @@ import '@/styles/globals.css';
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark-blue" storageKey="ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
       <ChatPage />
     </ThemeProvider>
   )
