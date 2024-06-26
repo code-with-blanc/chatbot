@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
-import { Message, User } from "@/components/ui/chat/data";
 import { AnimatePresence } from "framer-motion";
 import { UserMessage } from "./user-message";
 import { SystemMessage } from "./system-message";
+import { Message } from "@/store/chat/chat";
+import { User } from "@/store/user/user";
 
 interface ChatListProps {
   messages?: Message[];
@@ -18,7 +19,6 @@ export function ChatList({ messages, appUser }: ChatListProps) {
         messagesContainerRef.current.scrollHeight;
     }
   }, [messages]);
-  console.log(messages)
 
   return (
     <div className="w-full overflow-y-auto overflow-x-hidden h-full flex flex-col">
@@ -28,7 +28,7 @@ export function ChatList({ messages, appUser }: ChatListProps) {
       >
         <AnimatePresence>
           {messages?.map((message, index) => (
-            message.user.id === appUser.id ? (
+            message.userId === appUser.id ? (
               <UserMessage key={index} message={message} />
             ) : (
               <SystemMessage key={index} message={message} />

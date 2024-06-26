@@ -1,4 +1,4 @@
-import { Message } from "@/components/ui/chat/data";
+import { Message } from "@/store/chat/chat";
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { motion } from "framer-motion";
 
@@ -26,15 +26,15 @@ export const UserMessage = ({ message }: UserMessageProps) => (
             </span>
             <Avatar className="bg-primary text-primary-foreground flex justify-center items-center">
                 <AvatarImage
-                    src={message.user.avatar}
-                    alt={message.user.name}
+                    src={''}
+                    alt={''}
                     width={6}
                     height={6}
                 />
                 <AvatarFallback
                     className="bg-primary text-primary-foreground"
                 >
-                    {getInitials(message.user.name)}
+                    {getInitials('')}
                 </AvatarFallback>
             </Avatar>
         </div>

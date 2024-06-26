@@ -1,4 +1,4 @@
-import { Message } from "@/components/ui/chat/data";
+import { Message } from "@/store/chat/chat";
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { motion } from "framer-motion";
 
@@ -22,8 +22,8 @@ export const SystemMessage = ({ message }: SystemMessageProps) => (
         <div className="flex gap-3 items-center">
             <Avatar className="flex justify-center items-center">
                 <AvatarImage
-                    src={message.user.avatar}
-                    alt={message.user.name}
+                    src={''}
+                    alt={''}
                     width={6}
                     height={6}
                 />
