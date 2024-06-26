@@ -1,17 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
+[Route("/api/v1")]
 public class UserController : ControllerBase {
-    private readonly IUserRepository _userRepository;
-    public UserController(IUserRepository userRepository) {
-        _userRepository = userRepository;
+    private readonly UserService _userService;
+    public UserController(UserService userService) {
+        _userService = userService;
+    }
+
+    [HttpPost]
+    [Route("users/shadow-user")]
+    public async Task<IActionResult> PostShadowUser() {
+        var newUser = await _userService.CreateShadowUserAsync();
+        return Ok(newUser);
     }
 
     [HttpGet]
-    [Route("/api/v1/users")]
+    [Route("users")]
     public async Task<IActionResult> GetUsers() {
-        var users = await _userRepository.GetUsersAsync();
+        var users = await _userService.GetUsersAsync();
         return Ok(users);
     }
-
 }

@@ -10,7 +10,7 @@ services:
       - "33060:33060"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: teste
+      MYSQL_DATABASE: chatbot
       MYSQL_USER: user
       MYSQL_PASSWORD: user
     volumes:

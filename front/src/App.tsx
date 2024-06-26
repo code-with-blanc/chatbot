@@ -1,5 +1,5 @@
 import { ThemeProvider } from "./components/theme/theme-provider";
-import ChatPage from "./pages/chat/Chat";
+import ChatPage from "./pages/chat/ChatPage";
 
 import '@/styles/globals.css';
 
